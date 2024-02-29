@@ -1,0 +1,88 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Patient {
+    private int id;
+    private String name;
+    private String medicalHistory;
+
+    // Constructors, getters, and setters
+
+    @Override
+    public String toString() {
+        return "Patient ID: " + id + ", Name: " + name;
+    }
+}
+
+class Appointment {
+    private int id;
+    private int patientId;
+    private String date;
+    private String doctor;
+
+    // Constructors, getters, and setters
+
+    @Override
+    public String toString() {
+        return "Appointment ID: " + id + ", Date: " + date + ", Doctor: " + doctor;
+    }
+}
+
+class HospitalSystem {
+    private List<Patient> patients;
+    private List<Appointment> appointments;
+
+    public HospitalSystem() {
+        patients = new ArrayList<>();
+        appointments = new ArrayList<>();
+    }
+
+    public void addPatient(Patient patient) {
+        patients.add(patient);
+    }
+
+    public void addAppointment(Appointment appointment) {
+        appointments.add(appointment);
+    }
+
+    public List<Patient> getPatients() {
+        return patients;
+    }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+}
+
+public class HospitalInformationSystem {
+    public static void main(String[] args) {
+        HospitalSystem hospitalSystem = new HospitalSystem();
+
+        // Adding patients and appointments (you can replace this with UI input)
+        Patient patient1 = new Patient(1, "John Doe", "Allergic to penicillin");
+        Patient patient2 = new Patient(2, "Jane Smith", "No known allergies");
+        hospitalSystem.addPatient(patient1);
+        hospitalSystem.addPatient(patient2);
+
+        Appointment appointment1 = new Appointment(1, 1, "2024-02-20", "Dr. Johnson");
+        Appointment appointment2 = new Appointment(2, 2, "2024-02-25", "Dr. Smith");
+        hospitalSystem.addAppointment(appointment1);
+        hospitalSystem.addAppointment(appointment2);
+
+        // Retrieving patient and appointment information
+        List<Patient> patients = hospitalSystem.getPatients();
+        List<Appointment> appointments = hospitalSystem.getAppointments();
+
+        // Displaying patient information
+        System.out.println("Patients:");
+        for (Patient patient : patients) {
+            System.out.println(patient);
+        }
+
+        // Displaying appointment information
+        System.out.println("\nAppointments:");
+        for (Appointment appointment : appointments) {
+            System.out.println(appointment);
+        }
+    }
+}
